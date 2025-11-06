@@ -1,0 +1,134 @@
+:root {
+  --bg: #000;
+  --text: #fff;
+  --accent: #fff;
+  --content-max: 1824px;
+  --btn-height: 80px;
+  --btn-line-thickness: 2px;
+  --ovals-radius: 160px;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Golos Text", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.article {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: 80px 24px 120px;
+  text-align: center;
+}
+
+.article__title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 125%;
+  letter-spacing: 0%;
+  text-align: center;
+  opacity: 50%;
+}
+
+.article__text {
+  margin: 0;
+  font-size: clamp(24px, 9vw, 120px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.article__img {
+  display: inline-block;
+  width: auto;
+  object-fit: cover;
+  border-radius: var(--ovals-radius);
+  height: clamp(0px, 0.72em, 84px);
+}
+
+.article__img--sm {
+  max-width: 160px;
+}
+.article__img--md {
+  max-width: 320px;
+}
+.article__img--lg {
+  max-width: 360px;
+}
+
+.article__actions {
+  position: relative;
+  margin-top: 96px;
+  display: grid;
+  place-items: center;
+  padding: 24px 0;
+}
+
+.article__actions::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--btn-line-thickness);
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.button {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  padding-inline: 28px;
+  height: var(--btn-height);
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
+  border: var(--btn-line-thickness) solid var(--accent);
+  font: 400 24px/32px "Golos Text", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@supports (clip-path: polygon(0 0)) {
+  .button {
+    clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%);
+  }
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+}
+.button:hover {
+  filter: brightness(1.05);
+}
+.button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+  .article {
+    padding: 56px 16px 96px;
+  }
+  .article__actions {
+    margin-top: 64px;
+  }
+}
